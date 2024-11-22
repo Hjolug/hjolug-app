@@ -1,0 +1,352 @@
+[
+  {
+    "timestampUTC": 1732256339,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 100,
+    "reservoirLevelBool2": true,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 98,
+    "id": "1"
+  },
+  {
+    "timestampUTC": 1732256279,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 101,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 37,
+    "id": "2"
+  },
+  {
+    "timestampUTC": 1732256219,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 94,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": true,
+    "waterLevelChangeRate": 93,
+    "id": "3"
+  },
+  {
+    "timestampUTC": 1732256159,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 96,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 1,
+    "id": "4"
+  },
+  {
+    "timestampUTC": 1732256099,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 95,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 87,
+    "id": "5"
+  },
+  {
+    "timestampUTC": 1732256039,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 96,
+    "reservoirLevelBool2": true,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 76,
+    "id": "6"
+  },
+  {
+    "timestampUTC": 1732255979,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 112,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": true,
+    "waterLevelChangeRate": 66,
+    "id": "7"
+  },
+  {
+    "timestampUTC": 1732255919,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 140,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 97,
+    "id": "8"
+  },
+  {
+    "timestampUTC": 1732255859,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 127,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": true,
+    "waterLevelChangeRate": 5,
+    "id": "9"
+  },
+  {
+    "timestampUTC": 1732255799,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 101,
+    "reservoirLevelBool2": true,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 54,
+    "id": "10"
+  },
+  {
+    "timestampUTC": 1732255739,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 102,
+    "reservoirLevelBool2": true,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 65,
+    "id": "11"
+  },
+  {
+    "timestampUTC": 1732255679,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 87,
+    "reservoirLevelBool2": true,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 13,
+    "id": "12"
+  },
+  {
+    "timestampUTC": 1732255619,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 85,
+    "reservoirLevelBool2": true,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 99,
+    "id": "13"
+  },
+  {
+    "timestampUTC": 1732255559,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 96,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 66,
+    "id": "14"
+  },
+  {
+    "timestampUTC": 1732255499,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 98,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 73,
+    "id": "15"
+  },
+  {
+    "timestampUTC": 1732255439,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 93,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 35,
+    "id": "16"
+  },
+  {
+    "timestampUTC": 1732255379,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 97,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 75,
+    "id": "17"
+  },
+  {
+    "timestampUTC": 1732255319,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 110,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 65,
+    "id": "18"
+  },
+  {
+    "timestampUTC": 1732255259,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 92,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 10,
+    "id": "19"
+  },
+  {
+    "timestampUTC": 1732255199,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 88,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 69,
+    "id": "20"
+  },
+  {
+    "timestampUTC": 1732255139,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 97,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 33,
+    "id": "21"
+  },
+  {
+    "timestampUTC": 1732255079,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 87,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 14,
+    "id": "22"
+  },
+  {
+    "timestampUTC": 1732255019,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 99,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": true,
+    "waterLevelChangeRate": 78,
+    "id": "23"
+  },
+  {
+    "timestampUTC": 1732254959,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 95,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": true,
+    "waterLevelChangeRate": 47,
+    "id": "24"
+  },
+  {
+    "timestampUTC": 1732254899,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 114,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 75,
+    "id": "25"
+  },
+  {
+    "timestampUTC": 1732254839,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 85,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 46,
+    "id": "26"
+  },
+  {
+    "timestampUTC": 1732254779,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 98,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 38,
+    "id": "27"
+  },
+  {
+    "timestampUTC": 1732254719,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 132,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 44,
+    "id": "28"
+  },
+  {
+    "timestampUTC": 1732254659,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 99,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 64,
+    "id": "29"
+  },
+  {
+    "timestampUTC": 1732254599,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 130,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 69,
+    "id": "30"
+  },
+  {
+    "timestampUTC": 1732254539,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 94,
+    "reservoirLevelBool2": true,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 40,
+    "id": "31"
+  },
+  {
+    "timestampUTC": 1732254479,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 98,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 51,
+    "id": "32"
+  },
+  {
+    "timestampUTC": 1732254419,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 81,
+    "reservoirLevelBool2": true,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 94,
+    "id": "33"
+  },
+  {
+    "timestampUTC": 1732254359,
+    "reservoirLevelBool1": false,
+    "reservoirLevel": 12,
+    "reservoirLevelBool2": false,
+    "reservoirLevelBool3": true,
+    "reservoirLevelBool4": true,
+    "waterLevelChangeRate": 6,
+    "id": "34"
+  },
+  {
+    "timestampUTC": 1732254299,
+    "reservoirLevelBool1": true,
+    "reservoirLevel": 80,
+    "reservoirLevelBool2": true,
+    "reservoirLevelBool3": false,
+    "reservoirLevelBool4": false,
+    "waterLevelChangeRate": 99,
+    "id": "35"
+  }
+]
