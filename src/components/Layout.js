@@ -9,7 +9,7 @@ import WaterLevel from "./WaterLevel";
 
 const Layout = () => {
   return (
-    <div className="min-h-screen flex flex-col p-4">
+    <div className="min-h-screen flex flex-col px-4">
       {/* Global elements outside ReservoirContainer */}
       <Header />
 

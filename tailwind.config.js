@@ -7,10 +7,11 @@ module.exports = {
     },
     extend: {
       fontSize: {
-        xs: ["0.6rem", "1.125rem"],
-        sm: ["0.8rem", "1.25rem"],
-        md: ["0.9rem", "1rem"],
-        lg: ["1rem", "1.75rem"],
+        xxs: ["0.6rem", "1.125rem"],
+        xs: ["0.75rem", "1.125rem"],
+        sm: ["0.875rem", "1.25rem"],
+        md: ["1rem", "1rem"],
+        lg: ["1.5rem", "1.75rem"],
         xl: ["1.125rem", "1.4rem"],
         xxl: ["1.5rem", "1.875rem"],
         xxxl: ["2rem", "2.1rem"],
@@ -26,7 +27,7 @@ module.exports = {
         ],
         "display-sm": ["2.625rem", "2.375rem"],
         "display-md": [
-          "3.25rem",
+          "2.125rem",
           {
             lineHeight: "3rem",
             letterSpacing: "-0.05em",
