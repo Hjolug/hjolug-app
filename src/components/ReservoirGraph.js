@@ -12,8 +12,8 @@ const CustomTooltip = ({ active, payload, label }) => {
           top: "-50px", // Adjust the tooltip to appear higher
         }}
       >
-        <p className="font-medium">Time: {label}</p>
-        <p>Reservoir Level: {payload[0].value}</p>
+        <p>{payload[0].value} cm</p>
+        <p className="font-medium">{label}</p>
       </div>
     );
   }
@@ -38,15 +38,25 @@ const ReservoirGraph = () => {
   if (!formattedData.length) return <div>No data available</div>;
 
   return (
-    <div className="relative w-full h-64">
+    <div className="relative w-full h-80 mt-8">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={formattedData}
-          margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+          margin={{ top: 10, right: 0, left: 0, bottom: 0 }}
         >
-          <XAxis dataKey="time" />
+          <XAxis
+            dataKey="time"
+            tick={{ fontSize: 10 }} // Smaller font size for times
+            tickLine={false} // No tick lines
+            axisLine={false} // No axis line
+          />
           <Tooltip content={<CustomTooltip />} />
-          <Line type="monotone" dataKey="reservoirLevel" stroke="#8884d8" />
+          <Line
+            type="monotone"
+            dataKey="reservoirLevel"
+            stroke="#1D8A99" // Heimo-600 color
+            strokeWidth={2} // Line width set to 2px
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>
