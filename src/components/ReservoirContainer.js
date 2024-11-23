@@ -13,8 +13,8 @@ const ReservoirContainer = ({ children }) => {
   // Determine background color based on reservoir level
   const backgroundColor =
     currentLevel >= 105 && currentLevel <= 130
-      ? "bg-petter-600"
-      : "bg-johan-200";
+      ? "bg-johan-200"
+      : "bg-petter-600";
 
   return (
     <div

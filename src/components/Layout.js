@@ -6,6 +6,7 @@ import Notifications from "./Notifications"; // Placeholder for notifications
 import WaterLevelChange from "./WaterLevelChange";
 import Header from "./Header";
 import WaterLevel from "./WaterLevel";
+import ReservoirGraph from "./ReservoirGraph";
 
 const Layout = () => {
   return (
@@ -22,6 +23,7 @@ const Layout = () => {
             </div>
             <ReservoirIndicator />
           </div>
+          <ReservoirGraph />
         </ReservoirContainer>
 
         <EffectValues />

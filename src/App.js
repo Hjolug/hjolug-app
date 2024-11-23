@@ -4,52 +4,40 @@ import Layout from "./components/Layout";
 export const DataContext = createContext();
 
 const App = () => {
-  const [data, setData] = useState([]);
-  const [randomData, setRandomData] = useState({
-    reservoirLevel: 0,
-    reservoirLevelBool1: false,
-    reservoirLevelBool2: false,
-    reservoirLevelBool3: false,
-    reservoirLevelBool4: false,
-  });
+  const [data, setData] = useState([]); // Default to empty array
+  const [loading, setLoading] = useState(true); // Track ongoing fetch status
+  const [initialLoading, setInitialLoading] = useState(true); // Track first fetch only
 
   useEffect(() => {
-    console.log("Starting data fetch interval...");
-
     const fetchData = () => {
-      console.log("Fetching data...");
+      setLoading(true); // Set loading to true before each fetch
       fetch("https://6720616ae7a5792f05314e7c.mockapi.io/Herrekvarn")
         .then((response) => response.json())
         .then((fetchedData) => {
-          console.log("Fetched Data:", fetchedData); // Log the fetched data
           setData(fetchedData);
-
-          // Randomly pick a new item
-          const newRandomData = getRandomItem(fetchedData);
-          console.log("Random Data Updated:", newRandomData);
-          setRandomData(newRandomData);
+          setLoading(false); // Data fetched, ongoing loading ends
+          setInitialLoading(false); // First fetch is complete
         })
-        .catch((error) => console.error("Error fetching data:", error));
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setLoading(false); // Even on error, stop ongoing loading
+        });
     };
 
-    // Fetch data every second
-    const interval = setInterval(fetchData, 1000);
+    fetchData();
+    const interval = setInterval(fetchData, 1000); // Fetch every second
 
-    // Clean up interval on unmount
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Clean up interval on unmount
   }, []);
 
-  const getRandomItem = (array) => {
-    console.log("Selecting random item from array:", array); // Log the array before picking
-    return array.length > 0
-      ? array[Math.floor(Math.random() * array.length)]
-      : null;
-  };
-
-  console.log("Current Random Data:", randomData); // Log the current randomData during each render
-
   return (
-    <DataContext.Provider value={randomData}>
+    <DataContext.Provider
+      value={{
+        data: Array.isArray(data) ? data : [], // Ensure data is always an array
+        loading,
+        initialLoading,
+      }}
+    >
       <Layout />
     </DataContext.Provider>
   );

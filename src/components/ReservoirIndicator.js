@@ -2,16 +2,17 @@ import React, { useContext } from "react";
 import { DataContext } from "../App";
 
 const ReservoirIndicator = () => {
-  const data = useContext(DataContext);
+  const { data, loading, initialLoading } = useContext(DataContext); // Access both states
 
-  if (!data) return <div>Loading...</div>; // Handle null or undefined data
+  if (initialLoading) return <div>Loading...</div>; // Show only for the first fetch
+  if (!data.length) return <div>No data available</div>; // Handle empty data
 
   const {
     reservoirLevelBool1,
     reservoirLevelBool2,
     reservoirLevelBool3,
     reservoirLevelBool4,
-  } = data;
+  } = data[0]; // Use the latest data point
 
   const getIndicatorStyles = (isActive) =>
     isActive
