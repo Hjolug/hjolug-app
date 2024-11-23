@@ -16,7 +16,7 @@ const Layout = () => {
 
       <main className="flex-grow">
         <ReservoirContainer>
-          <div className="flex justify-between">
+          <div className="flex justify-between px-4">
             <div>
               <WaterLevel />
               <WaterLevelChange />
