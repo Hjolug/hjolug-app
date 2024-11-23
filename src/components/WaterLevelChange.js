@@ -10,12 +10,20 @@ const WaterLevelChange = () => {
   const isIncreasing = currentChange > 0;
 
   return (
-    <div className="flex items-center gap-2 text-black">
-      <span className={isIncreasing ? "text-green-500" : "text-red-500"}>
-        {isIncreasing ? "▲" : "▼"}
+    <div className="flex items-center gap-1.5 text-black">
+      <span
+        className={` font-medium ${
+          isIncreasing
+            ? "text-johan-600 text-display-sm"
+            : "text-heimo-600 text-xxl"
+        }`}
+      >
+        {isIncreasing ? "⌃" : "⌄"}
       </span>
-      <p className="text-lg">{Math.abs(currentChange)}</p>
-      <span className="text-xs -mt-2"> Ø</span>
+      <span className="gap-0.5 flex">
+        <p className="text-lg font-normal">{Math.abs(currentChange)}</p>
+        <span className="text-xs mt-0.5 font-medium">Ø</span>
+      </span>
     </div>
   );
 };

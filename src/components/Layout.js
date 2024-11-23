@@ -16,10 +16,12 @@ const Layout = () => {
       <main className="flex-grow">
         <ReservoirContainer>
           <div className="flex justify-between">
-            <WaterLevel />
+            <div>
+              <WaterLevel />
+              <WaterLevelChange />
+            </div>
             <ReservoirIndicator />
           </div>
-          <WaterLevelChange />
         </ReservoirContainer>
 
         <EffectValues />

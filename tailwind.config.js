@@ -25,7 +25,7 @@ module.exports = {
             letterSpacing: "-0.01em",
           },
         ],
-        "display-sm": ["2.625rem", "2.375rem"],
+        "display-sm": ["1.25rem", "2.375rem"],
         "display-md": [
           "2.125rem",
           {
@@ -104,6 +104,19 @@ module.exports = {
           700: "#BBDCEF",
           800: "#BBDCEF",
           900: "#BBDCEF",
+        },
+        heimo: {
+          25: "#1D8A99",
+          50: "#1D8A99",
+          100: "#1D8A99",
+          200: "#1D8A99",
+          300: "#1D8A99",
+          400: "#1D8A99",
+          500: "#1D8A99",
+          600: "#1D8A99",
+          700: "#1D8A99",
+          800: "#1D8A99",
+          900: "#1D8A99",
         },
         black: "#000000",
         "black-80": "rgba(0,0,0,0.8)",
