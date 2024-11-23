@@ -14,7 +14,8 @@ const WaterLevelChange = () => {
       <span className={isIncreasing ? "text-green-500" : "text-red-500"}>
         {isIncreasing ? "▲" : "▼"}
       </span>
-      <p>{Math.abs(currentChange)} Ø</p>
+      <p className="text-lg">{Math.abs(currentChange)}</p>
+      <span className="text-xs -mt-2"> Ø</span>
     </div>
   );
 };
