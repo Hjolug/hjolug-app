@@ -56,7 +56,11 @@ const ReservoirGraph = () => {
           <Tooltip
             content={<CustomTooltip />}
             position={{ y: 10 }} // Keeps the tooltip near the top of the graph
-            cursor={{ stroke: "#A5D0D6", strokeWidth: 1 }} // Customizes cursor style
+            cursor={{
+              stroke: "#8EC5CC",
+              strokeWidth: 1,
+              strokeDasharray: "5 5",
+            }} // Customizes cursor style
           />
           <Line
             type="monotone"

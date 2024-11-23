@@ -17,9 +17,7 @@ const ReservoirContainer = ({ children }) => {
       : "bg-petter-600";
 
   return (
-    <div
-      className={`py-5 text-white ${backgroundColor} min-h-screen rounded-2xl`}
-    >
+    <div className={`pt-5 pb-2 text-white ${backgroundColor} rounded-2xl`}>
       {children}
     </div>
   );
