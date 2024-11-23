@@ -2,14 +2,17 @@ import React, { useContext, useMemo } from "react";
 import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip } from "recharts";
 import { DataContext } from "../App";
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip = ({ active, payload, label, coordinate }) => {
   if (active && payload && payload.length) {
     return (
       <div
-        className="bg-white shadow-md p-2 rounded text-sm text-black"
+        className="bg-white shadow-md p-2 rounded text-sm text-black w-24"
         style={{
-          position: "relative",
-          top: "-50px", // Adjust the tooltip to appear higher
+          position: "absolute",
+          top: "10px", // Always at the top of the graph
+          left: `${coordinate.x}px`, // Adjust horizontally based on the x-coordinate
+          transform: "translateX(-50%)", // Center horizontally
+          pointerEvents: "none", // Avoid blocking interactions
         }}
       >
         <p>{payload[0].value} cm</p>
@@ -38,11 +41,11 @@ const ReservoirGraph = () => {
   if (!formattedData.length) return <div>No data available</div>;
 
   return (
-    <div className="relative w-full h-80 mt-8">
+    <div className="relative w-full h-96">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={formattedData}
-          margin={{ top: 10, right: 0, left: 0, bottom: 0 }}
+          margin={{ top: 80, right: 0, left: 0, bottom: 0 }}
         >
           <XAxis
             dataKey="time"
@@ -50,7 +53,11 @@ const ReservoirGraph = () => {
             tickLine={false} // No tick lines
             axisLine={false} // No axis line
           />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip
+            content={<CustomTooltip />}
+            position={{ y: 10 }} // Keeps the tooltip near the top of the graph
+            cursor={{ stroke: "#A5D0D6", strokeWidth: 1 }} // Customizes cursor style
+          />
           <Line
             type="monotone"
             dataKey="reservoirLevel"
