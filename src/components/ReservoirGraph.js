@@ -11,7 +11,7 @@ const CustomTooltip = ({ active, payload, label, coordinate }) => {
 
     return (
       <div
-        className="bg-black shadow-sm p-2 items-center rounded-full text-sm text-white w-44 justify-center"
+        className="bg-white shadow-sm p-2 items-center rounded-full text-sm text-black w-36 justify-center"
         style={{
           position: "absolute",
           top: "10px",
@@ -20,21 +20,18 @@ const CustomTooltip = ({ active, payload, label, coordinate }) => {
           pointerEvents: "none",
         }}
       >
-        <div className="space-x-2 flex flex-row justify-center items-center">
-          <div className="justify-center text-center text-xxs pr-2">
-            {label}
-          </div>
+        <div className="space-x-1 flex flex-row justify-center items-center">
           <span className="text-lg flex">
             {reservoirLevel}
             <span className="font-medium text-xxs pl-0.5"> cm</span>
           </span>
-
           <span className="text-lg">/</span>
           <span className="text-lg flex">
             {powerGenerator}
             <span className="font-medium text-xxs pl-0.5"> kW</span>
           </span>
         </div>
+        <div className="justify-center text-center text-xxs pr-2">{label}</div>
       </div>
     );
   }
