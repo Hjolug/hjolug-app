@@ -10,7 +10,7 @@ import ReservoirGraph from "./ReservoirGraph";
 
 const Layout = () => {
   return (
-    <div className="min-h-screen flex flex-col px-4">
+    <div className="min-h-screen flex flex-col px-4 overflow-x-hidden w-full">
       {/* Global elements outside ReservoirContainer */}
       <Header />
 

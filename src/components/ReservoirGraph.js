@@ -11,10 +11,10 @@ const CustomTooltip = ({ active, payload, label, coordinate }) => {
 
     return (
       <div
-        className="bg-white shadow-sm p-2 items-center rounded-full text-sm text-black w-36 justify-center"
+        className="bg-white shadow-sm px-2 py-1 items-center rounded-full text-sm text-black w-36 justify-center"
         style={{
           position: "absolute",
-          top: "10px",
+          top: "30px",
           left: `${coordinate.x}px`,
           transform: "translateX(-50%)",
           pointerEvents: "none",
@@ -47,14 +47,11 @@ const ReservoirGraph = () => {
   const now = Math.floor(Date.now() / 1000); // Current time in seconds since epoch
 
   const formattedData = useMemo(() => {
-    console.log("Raw Data:", data); // Debug raw data
     if (!Array.isArray(data) || data.length === 0) return [];
 
     const cutoffTime = now - timeRange * 60 * 60; // Calculate cutoff timestamp
-    console.log("Cutoff Time:", cutoffTime); // Debug cutoff time
 
     const filteredData = data.filter((item) => item.timestampUTC >= cutoffTime);
-    console.log("Filtered Data:", filteredData); // Debug filtered data
 
     const dataset = filteredData.length > 0 ? filteredData : data;
 
@@ -72,14 +69,20 @@ const ReservoirGraph = () => {
     return Math.ceil(formattedData.length / 6); // Display approximately 6 labels
   }, [formattedData]);
 
+  const customTickFormatter = (value, index) => {
+    // Hide the last two labels
+    if (index >= formattedData.length - 2) return ""; // Avoid the last two labels
+    return value;
+  };
+
   if (!formattedData.length) return <div>No data available</div>;
 
   return (
     <div className="relative w-full h-96">
       {/* Dropdown for selecting time range */}
-      <div className="absolute bottom-1 right-2 z-10 bg-transparent">
+      <div className="absolute bottom-1.5 right-3 z-10 bg-transparent">
         <select
-          className="border border-gray-300 rounded px-1 py-1 text-sm text-black"
+          className="rounded-lg px-2 py-1 text-sm text-black font-medium"
           value={timeRange}
           onChange={(e) => setTimeRange(Number(e.target.value))}
         >
@@ -91,14 +94,18 @@ const ReservoirGraph = () => {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={formattedData}
-          margin={{ top: 80, right: 0, left: 0, bottom: 0 }}
+          margin={{ top: 80, right: 0, left: 0, bottom: 12 }}
         >
           <XAxis
             dataKey="time"
             tick={{ fontSize: 10 }}
             tickLine={false}
             axisLine={false}
+            tickMargin={12}
             interval={interval} // Dynamically calculated interval
+            tickFormatter={(value, index) =>
+              index < formattedData.length - 2 ? value : ""
+            } // Hide the last two labels
           />
           <Tooltip
             content={<CustomTooltip />}

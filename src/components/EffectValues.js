@@ -14,7 +14,7 @@ const EffectValues = () => {
       : null; // Calculate Netto without conversion
 
   return (
-    <div className="p-4 bg-white flex flex-row space-x-2">
+    <div className="px-4 py-6 bg-white flex flex-row space-x-2">
       <div className="">
         <div className="text-display-md font-medium">
           {powerGenerator !== null
