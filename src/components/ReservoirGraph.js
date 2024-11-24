@@ -11,7 +11,7 @@ const CustomTooltip = ({ active, payload, label, coordinate }) => {
 
     return (
       <div
-        className="bg-white shadow-md p-2 rounded text-sm text-black w-36"
+        className="bg-white shadow-md p-2 rounded text-sm text-black w-40"
         style={{
           position: "absolute",
           top: "10px",
@@ -20,15 +20,20 @@ const CustomTooltip = ({ active, payload, label, coordinate }) => {
           pointerEvents: "none",
         }}
       >
-        <p>
-          <span className="font-medium">Time:</span> {label}
-        </p>
-        <p>
-          <span className="font-medium">Water:</span> {reservoirLevel} cm
-        </p>
-        <p>
-          <span className="font-medium">Power:</span> {powerGenerator} kW
-        </p>
+        <div className="space-x-2 flex flex-row">
+          <span className="font-medium text-lg flex">
+            {reservoirLevel}
+            <span className="font-medium text-xxs pl-1"> cm</span>
+          </span>
+
+          <span className="font-medium text-lg">/</span>
+          <span className="font-medium  text-lg flex">
+            {powerGenerator}
+            <span className="font-medium text-xxs pl-1"> kW</span>
+          </span>
+        </div>
+
+        {label}
       </div>
     );
   }
@@ -53,21 +58,9 @@ const ReservoirGraph = () => {
     const filteredData = data.filter((item) => item.timestampUTC >= cutoffTime);
     console.log("Filtered Data:", filteredData); // Debug filtered data
 
-    if (filteredData.length === 0) {
-      console.warn(
-        "No data matches the selected time range. Showing all data."
-      );
-      return data.map((item) => ({
-        time: new Date(item.timestampUTC * 1000).toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-        reservoirLevel: item.reservoirLevel,
-        powerGenerator: item.powerGenerator,
-      }));
-    }
+    const dataset = filteredData.length > 0 ? filteredData : data;
 
-    return filteredData.map((item) => ({
+    return dataset.map((item) => ({
       time: new Date(item.timestampUTC * 1000).toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -76,6 +69,10 @@ const ReservoirGraph = () => {
       powerGenerator: item.powerGenerator,
     }));
   }, [data, timeRange, now]);
+
+  const interval = useMemo(() => {
+    return Math.ceil(formattedData.length / 6); // Display approximately 6 labels
+  }, [formattedData]);
 
   if (!formattedData.length) return <div>No data available</div>;
 
@@ -103,6 +100,7 @@ const ReservoirGraph = () => {
             tick={{ fontSize: 10 }}
             tickLine={false}
             axisLine={false}
+            interval={interval} // Dynamically calculated interval
           />
           <Tooltip
             content={<CustomTooltip />}
@@ -123,7 +121,7 @@ const ReservoirGraph = () => {
           <Line
             type="monotone"
             dataKey="powerGenerator"
-            stroke="#FF5666" // Amber color for contrast
+            stroke="#FF5666"
             strokeWidth={2}
             strokeDasharray="5 5"
             dot={false}
