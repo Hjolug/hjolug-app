@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip } from "recharts";
 import { DataContext } from "../App";
 
@@ -6,19 +6,18 @@ const CustomTooltip = ({ active, payload, label, coordinate }) => {
   if (active && payload && payload.length) {
     const reservoirLevel =
       payload.find((item) => item.dataKey === "reservoirLevel")?.value ?? "N/A";
-    const energyGenerator =
-      payload.find((item) => item.dataKey === "energyGenerator")?.value ??
-      "N/A";
+    const powerGenerator =
+      payload.find((item) => item.dataKey === "powerGenerator")?.value ?? "N/A";
 
     return (
       <div
         className="bg-white shadow-md p-2 rounded text-sm text-black w-36"
         style={{
           position: "absolute",
-          top: "10px", // Always at the top of the graph
-          left: `${coordinate.x}px`, // Adjust horizontally based on the x-coordinate
-          transform: "translateX(-50%)", // Center horizontally
-          pointerEvents: "none", // Avoid blocking interactions
+          top: "10px",
+          left: `${coordinate.x}px`,
+          transform: "translateX(-50%)",
+          pointerEvents: "none",
         }}
       >
         <p>
@@ -28,7 +27,7 @@ const CustomTooltip = ({ active, payload, label, coordinate }) => {
           <span className="font-medium">Water:</span> {reservoirLevel} cm
         </p>
         <p>
-          <span className="font-medium">Energy:</span> {energyGenerator} kW
+          <span className="font-medium">Power:</span> {powerGenerator} kW
         </p>
       </div>
     );
@@ -40,22 +39,60 @@ const CustomTooltip = ({ active, payload, label, coordinate }) => {
 const ReservoirGraph = () => {
   const { data } = useContext(DataContext);
 
+  const [timeRange, setTimeRange] = useState(8); // Default to the last 8 hours
+
+  const now = Math.floor(Date.now() / 1000); // Current time in seconds since epoch
+
   const formattedData = useMemo(() => {
+    console.log("Raw Data:", data); // Debug raw data
     if (!Array.isArray(data) || data.length === 0) return [];
-    return data.map((item) => ({
+
+    const cutoffTime = now - timeRange * 60 * 60; // Calculate cutoff timestamp
+    console.log("Cutoff Time:", cutoffTime); // Debug cutoff time
+
+    const filteredData = data.filter((item) => item.timestampUTC >= cutoffTime);
+    console.log("Filtered Data:", filteredData); // Debug filtered data
+
+    if (filteredData.length === 0) {
+      console.warn(
+        "No data matches the selected time range. Showing all data."
+      );
+      return data.map((item) => ({
+        time: new Date(item.timestampUTC * 1000).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+        reservoirLevel: item.reservoirLevel,
+        powerGenerator: item.powerGenerator,
+      }));
+    }
+
+    return filteredData.map((item) => ({
       time: new Date(item.timestampUTC * 1000).toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
       reservoirLevel: item.reservoirLevel,
-      energyGenerator: (item.energyGenerator / 1000).toFixed(2), // Convert to kW and format to 2 decimal places
+      powerGenerator: item.powerGenerator,
     }));
-  }, [data]);
+  }, [data, timeRange, now]);
 
   if (!formattedData.length) return <div>No data available</div>;
 
   return (
     <div className="relative w-full h-96">
+      {/* Dropdown for selecting time range */}
+      <div className="absolute bottom-1 right-2 z-10 bg-transparent">
+        <select
+          className="border border-gray-300 rounded px-1 py-1 text-sm text-black"
+          value={timeRange}
+          onChange={(e) => setTimeRange(Number(e.target.value))}
+        >
+          <option value={8}>8h</option>
+          <option value={24}>24h</option>
+          <option value={48}>48h</option>
+        </select>
+      </div>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={formattedData}
@@ -63,33 +100,33 @@ const ReservoirGraph = () => {
         >
           <XAxis
             dataKey="time"
-            tick={{ fontSize: 10 }} // Smaller font size for times
-            tickLine={false} // No tick lines
-            axisLine={false} // No axis line
+            tick={{ fontSize: 10 }}
+            tickLine={false}
+            axisLine={false}
           />
           <Tooltip
             content={<CustomTooltip />}
-            position={{ y: 10 }} // Keeps the tooltip near the top of the graph
+            position={{ y: 10 }}
             cursor={{
               stroke: "#8EC5CC",
               strokeWidth: 1,
               strokeDasharray: "5 5",
-            }} // Customizes cursor style
+            }}
           />
-          {/* Energy Generator Line */}
-          <Line
-            type="monotone"
-            dataKey="energyGenerator"
-            stroke="#FF5666" // Amber color for contrast
-            strokeWidth={2} // Line width set to 2px
-            strokeDasharray="5 5"
-          />
-          {/* Water Level Line */}
           <Line
             type="monotone"
             dataKey="reservoirLevel"
-            stroke="#1D8A99" // Heimo-600 color
-            strokeWidth={2} // Line width set to 2px
+            stroke="#1D8A99"
+            strokeWidth={2}
+            dot={false}
+          />
+          <Line
+            type="monotone"
+            dataKey="powerGenerator"
+            stroke="#FF5666" // Amber color for contrast
+            strokeWidth={2}
+            strokeDasharray="5 5"
+            dot={false}
           />
         </LineChart>
       </ResponsiveContainer>
