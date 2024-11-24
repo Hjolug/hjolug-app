@@ -2,16 +2,25 @@ import React, { useContext } from "react";
 import { DataContext } from "../App";
 
 const EffectValues = () => {
-  const data = useContext(DataContext);
+  const { data, loading, initialLoading } = useContext(DataContext); // Destructure states
 
-  if (!data) return <div>Loading...</div>; // Handle null or undefined data
+  if (initialLoading) return <div>Loading...</div>; // Show only for the first fetch
+  if (!data.length) return <div>No data available</div>; // Handle empty data
 
-  const effectValue = data.energyGenerator || "N/A"; // Add fallback value
+  const effectValueInWatts = data[0]?.energyGenerator ?? null; // Safely access the value
+  const effectValueInKilowatts =
+    effectValueInWatts !== null ? (effectValueInWatts / 1000).toFixed(2) : null;
 
   return (
-    <div className="p-4 bg-white shadow-md">
-      <h2 className="text-lg font-semibold">Effect Value</h2>
-      <p>{effectValue}</p>
+    <div className="p-4 bg-white flex flex-col">
+      <div className="text-display-md font-medium">
+        {effectValueInKilowatts !== null
+          ? `${effectValueInKilowatts}`
+          : "No effect value available"}
+      </div>
+      <div className="text-sm pt-4">Effekt</div>
+      <div className="text-display-md font-medium"></div>
+      <div className="text-sm pt-4">Netto</div>
     </div>
   );
 };

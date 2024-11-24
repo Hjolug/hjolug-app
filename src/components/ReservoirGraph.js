@@ -4,9 +4,15 @@ import { DataContext } from "../App";
 
 const CustomTooltip = ({ active, payload, label, coordinate }) => {
   if (active && payload && payload.length) {
+    const reservoirLevel =
+      payload.find((item) => item.dataKey === "reservoirLevel")?.value ?? "N/A";
+    const energyGenerator =
+      payload.find((item) => item.dataKey === "energyGenerator")?.value ??
+      "N/A";
+
     return (
       <div
-        className="bg-white shadow-md p-2 rounded text-sm text-black w-24"
+        className="bg-white shadow-md p-2 rounded text-sm text-black w-36"
         style={{
           position: "absolute",
           top: "10px", // Always at the top of the graph
@@ -15,8 +21,15 @@ const CustomTooltip = ({ active, payload, label, coordinate }) => {
           pointerEvents: "none", // Avoid blocking interactions
         }}
       >
-        <p>{payload[0].value} cm</p>
-        <p className="font-medium">{label}</p>
+        <p>
+          <span className="font-medium">Time:</span> {label}
+        </p>
+        <p>
+          <span className="font-medium">Water:</span> {reservoirLevel} cm
+        </p>
+        <p>
+          <span className="font-medium">Energy:</span> {energyGenerator} kW
+        </p>
       </div>
     );
   }
@@ -35,6 +48,7 @@ const ReservoirGraph = () => {
         minute: "2-digit",
       }),
       reservoirLevel: item.reservoirLevel,
+      energyGenerator: (item.energyGenerator / 1000).toFixed(2), // Convert to kW and format to 2 decimal places
     }));
   }, [data]);
 
@@ -45,7 +59,7 @@ const ReservoirGraph = () => {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={formattedData}
-          margin={{ top: 80, right: 0, left: 0, bottom: 0 }}
+          margin={{ top: 100, right: 0, left: 0, bottom: 0 }}
         >
           <XAxis
             dataKey="time"
@@ -62,6 +76,15 @@ const ReservoirGraph = () => {
               strokeDasharray: "5 5",
             }} // Customizes cursor style
           />
+          {/* Energy Generator Line */}
+          <Line
+            type="monotone"
+            dataKey="energyGenerator"
+            stroke="#FF5666" // Amber color for contrast
+            strokeWidth={2} // Line width set to 2px
+            strokeDasharray="5 5"
+          />
+          {/* Water Level Line */}
           <Line
             type="monotone"
             dataKey="reservoirLevel"
